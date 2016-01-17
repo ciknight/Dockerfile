@@ -2,7 +2,6 @@
 #
 # VERSION       1.0
 
-# use the ubuntu base image ci in tenxcloud
 FROM ubuntu:14.04
 
 MAINTAINER ci_knight <ci_knight@msn.cn>
