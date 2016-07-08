@@ -54,5 +54,7 @@ RUN make -j2 && make install
 
 RUN ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx
 ADD nginx.conf /usr/local/nginx/conf/nginx.conf
+
+EXPOSE 80
  
 CMD ["nginx"]
