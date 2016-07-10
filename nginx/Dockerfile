@@ -13,7 +13,7 @@ MAINTAINER haining <ci_knight@msn.cn>
 
 RUN sed -i 's/archive.ubuntu/mirrors.aliyun/g' /etc/apt/sources.list
 
-RUN apt-get update && apt-get install -y wget gcc make 
+RUN apt-get update && apt-get install -y wget gcc make git 
 
 # dependency
 # gzip-zlib rewrite-pcre ssl-openssl
@@ -24,6 +24,7 @@ RUN wget -c http://nginx.org/download/nginx-1.8.1.tar.gz && tar zxvf nginx-1.8.1
 RUN wget -c http://luajit.org/download/LuaJIT-2.0.4.tar.gz && tar zxvf LuaJIT-2.0.4.tar.gz
 RUN wget -c https://github.com/simpl/ngx_devel_kit/archive/v0.3.0.tar.gz && tar zxvf v0.3.0.tar.gz
 RUN wget -c https://github.com/openresty/lua-nginx-module/archive/v0.10.5.tar.gz && tar zxvf v0.10.5.tar.gz
+RUN git clone https://github.com/openresty/echo-nginx-module.git
 
 # Build luajit
 WORKDIR /LuaJIT-2.0.4
@@ -49,7 +50,8 @@ RUN ./configure --with-poll_module \
         --with-http_mp4_module \
         --with-ld-opt="-Wl,-rpath,/path/to/luajit-or-lua/lib" \
         --add-module=/ngx_devel_kit-0.3.0 \
-        --add-module=/lua-nginx-module-0.10.5 
+        --add-module=/lua-nginx-module-0.10.5 \
+        --add-module=/echo-nginx-module
 RUN make -j2 && make install
 
 RUN ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx
