@@ -12,7 +12,7 @@ ADD repositories /etc/apk/repositories
 ADD shadowsocks.json /etc/shadowsocks.json
 ADD haproxy.cfg /etc/haproxy/haproxy.cfg
 ADD polipo.conf /etc/polipo.conf
-ADD polipo /bin/polipo # apk add -U build-base openssl, jech/polipo
+ADD polipo /bin/polipo
 ADD ciproxy.sh /ciproxy.sh
 
 RUN apk add --update python py-pip haproxy
