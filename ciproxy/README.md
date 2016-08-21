@@ -5,3 +5,5 @@
 ## help
 
 - Shadowsocks 加密使用 rc4-md5，更加轻量级
+- https://hub.docker.com/r/vimagick/polipo/~/dockerfile/
+- https://hub.docker.com/r/johnmccabe/polipo/~/dockerfile/

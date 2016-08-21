@@ -15,9 +15,10 @@ ADD polipo.conf /etc/polipo.conf
 ADD polipo /bin/polipo
 ADD ciproxy.sh /ciproxy.sh
 
-RUN apk add --update python py-pip haproxy
-RUN pip install shadowsocks
+RUN apk add --update python py-pip haproxy \
+    && pip install shadowsocks \
+    && mkdir -p /usr/share/polipo/www /var/cache/polipo
 
 EXPOSE 51314
- 
+
 CMD ["sh", "ciproxy.sh"]
