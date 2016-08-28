@@ -79,9 +79,13 @@ RUN CONFIG="--with-poll_module \
         && install -m644 html/index.html /usr/share/nginx/html/ \
         && install -m644 html/50x.html /usr/share/nginx/html/ \
         && rm -rf /tmp/nginx-$NGINX_VERSION \
-        && apk del .build-deps gcc wget git make
+        && apk del .build-deps gcc wget git make \
+        && chown -R nginx:nginx /usr/share/nginx \
+        && chmod -R 755 /usr/share/nginx
 
 COPY nginx.conf /etc/nginx/nginx.conf
+
+
 
 #        --with-ld-opt="-Wl,-rpath,/path/to/luajit-or-lua/lib" \
 #        --add-module=/ngx_devel_kit-0.3.0 \
