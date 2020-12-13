@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 docker stop mysql && docker rm mysql
 docker run -itd --name mysql \
+    --restart=always \
     -e MYSQL_ALLOW_EMPTY_PASSWORD=yes \
     -e MYSQL_ROOT_PASSWORD=root \
     -e MYSQL_DATABASE=mysql \
